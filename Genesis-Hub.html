@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Godzilla Genesis</title>
+    <style>
+        /* Basic reset and styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('https://images.wallpapersden.com/image/download/kaiju-rampage-hd-godzilla-minus-one_bmZuZmuUmZqaraWkpJRobWllrWdma2U.jpg') no-repeat center center fixed;
+            background-size: cover; /* Ensure the background covers the entire page */
+            color: #e0e0e0;
+            line-height: 1.6;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 5px solid #c62828; /* Darker red border */
+            position: relative;
+            overflow: hidden;
+        }
+        header h1, header h2, header p {
+            background: rgba(0, 0, 0, 0.6); /* Black background with transparency for text blocks */
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            margin: 0.5rem 0; /* Margin to separate the elements */
+            display: block; /* Ensure each element takes full width */
+        }
+        header h1 {
+            font-size: 4rem; /* Larger font size for title */
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            background: linear-gradient(45deg, #ff5722, #e53935); /* Gradient background for text */
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: textGlow 1.5s infinite alternate; /* Animated glowing effect */
+        }
+        header h2 {
+            font-size: 2.5rem; /* Slightly smaller font size for subtitle */
+            font-weight: 300; /* Light font weight for subtitle */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            background: linear-gradient(45deg, #ff5722, #e53935); /* Gradient text same as h1 */
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-top: -0.5rem; /* Reduce space between h1 and h2 */
+        }
+        header p {
+            font-size: 1.2rem;
+            font-style: italic; /* Italicize the motto for emphasis */
+        }
+        main {
+            padding: 2rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+        main h2 {
+            color: #e53935; /* Red color for headings */
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            font-weight: 500; /* Medium font weight */
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+        main h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, #ff5722, #e53935);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+        main h2:hover::before {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        main h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #e0e0e0;
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+        main h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(135deg, #ff5722, #e53935);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+        main h3:hover::before {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .file-link {
+            display: block;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: linear-gradient(135deg, #ff5722, #e53935); /* Gradient background for fire effect */
+            border: 1px solid #f44336;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+            position: relative; /* For pseudo-element positioning */
+            overflow: hidden; /* Hide overflow for pseudo-element */
+        }
+        .file-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 87, 34, 0.5), transparent);
+            opacity: 0.5;
+            z-index: 0;
+            transition: opacity 0.3s;
+        }
+        .file-link:hover::before {
+            opacity: 0.8;
+        }
+        .file-link:hover {
+            background: linear-gradient(135deg, #e64a19, #d32f2f); /* Darker gradient on hover */
+            transform: scale(1.05); /* Slightly enlarge the button */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+        }
+        footer {
+            background: #222;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        @keyframes textGlow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 87, 34, 0.6);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 87, 34, 1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>G O D Z I L L A</h1>
+        <h2>GENESIS</h2>
+        <p>"Command Giants, Conquer Worlds!"</p>
+    </header>
+    
+    <main>
+        <h2>Welcome to Godzilla Genesis!</h2>
+        <p>Here you can find all the resources and files related to the Godzilla Genesis game. Download the latest updates here.</p>
+        
+        <h3>Available Versions Below!</h3>
+        <!-- Updated href attributes with provided paths -->
+        <a class="file-link" href="https://mega.nz/file/OU9jSQgA#26jwti9BeOgsw1vAqqWsAgu3J0b2iiINTMQNR0Pzwlc" download>Godzilla Genesis 1.0.0</a>
+        <a class="file-link" href="https://mega.nz/file/HYdXzRAK#gZ2XFDlkRevGcUvq9vW6gfdIuzeGj8V82Stpz0RcZzQ" download>Godzilla Genesis 1.0.1</a>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Godzilla Genesis. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+
+
+
